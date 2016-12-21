@@ -1,0 +1,16 @@
+.body-component {
+  font-size: 30px;
+  letter-spacing: 2px;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #9A9386;
+  width: 100%
+}
+.body-component:hover {
+  border: 4px dotted #F7EFDE;
+}
+.body-component:focus {
+  border: 4px dotted #A7CAE5;
+  outline: none;
+}
