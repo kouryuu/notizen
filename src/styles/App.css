@@ -1,0 +1,10 @@
+/* Base Application Styles */
+body {
+  color: #9A9386;
+  background: #FEFEF4;
+}
+#app {
+  margin-left: 10%;
+  margin-top: 20px;
+  margin-right: 10%;
+}
