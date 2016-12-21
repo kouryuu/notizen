@@ -1,0 +1,18 @@
+.title-component {
+  font-size: 40px;
+  font-family: serif;
+  letter-spacing: 2px;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #9A9386;
+  width: 100%;
+  text-align: center;
+}
+.title-component:hover {
+  border: 4px dotted #F7EFDE;
+}
+.title-component:focus {
+  border: 4px dotted #A7CAE5;
+  outline: none;
+}
