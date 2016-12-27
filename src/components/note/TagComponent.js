@@ -8,7 +8,7 @@ class TagComponent extends React.Component {
   render() {
     return (
       <div className="tag-component">
-        Please edit src/components/note//TagComponent.js to update this component!
+        { "07:00" }
       </div>
     );
   }
