@@ -1,3 +1,6 @@
 .wrapper-component {
-  border: 1px dashed #f00;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  border-bottom: 1px #F7EFDE solid;
 }
