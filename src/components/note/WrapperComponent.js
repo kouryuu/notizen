@@ -1,15 +1,15 @@
 'use strict';
 
 import React from 'react';
-import Body from 'BodyComponent';
-import Tag from 'TagComponent';
+import Body from './BodyComponent';
+import Tag from './TagComponent';
 require('styles/note/Wrapper.css');
 
 class WrapperComponent extends React.Component {
   render() {
     return (
       <div className="wrapper-component">
-        <Tag></Tag><Body></Body>
+        <Tag></Tag><Body text="yay"></Body>
       </div>
     );
   }
