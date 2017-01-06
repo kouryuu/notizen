@@ -8,7 +8,7 @@ class TagComponent extends React.Component {
   render() {
     return (
       <div className="tag-component">
-        { "07:00" }
+        { '07:00' }
       </div>
     );
   }
