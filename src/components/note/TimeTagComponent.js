@@ -12,10 +12,15 @@ class TimeTagComponent extends React.Component {
       minute: new Date().getMinutes()
     };
   }
+  zeroedNumber(number) {
+    return (parseInt(number) > 9)?number:'0'+number;
+  }
   render() {
     return (
-      <div className="timetag-component">
-        { this.state.hour } {':'} { this.state.minute }
+      <div className="timetag-component-wrapper">
+        <div className="timertag-component" onClick={ this.toggleControls() }>
+          { this.zeroedNumber(this.state.hour) } {':'} { this.zeroedNumber(this.state.minute) }
+        </div>
       </div>
     );
   }
