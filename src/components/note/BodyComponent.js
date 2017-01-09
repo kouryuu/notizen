@@ -16,8 +16,8 @@ class BodyComponent extends React.Component {
   }
   render() {
     return (
-      <div>
       <input type="text" className="body-component" placeholder={this.props.text} value={ this.state.text } onChange={ this.ChangeValue } />
+      <input type="text" className="body-component" placeholder={ this.props.text } value={ this.state.text } onChange={ this.ChangeValue.bind(this) } />
       </div>
     );
   }
