@@ -9,7 +9,7 @@ class AddButtonComponent extends React.Component {
     return (
       <span className="addbutton-component">
         <a href="#" onClick={ this.props.clickHandler } >
-        [ + ]
+        <i className="fa fa-plus-circle" aria-hidden="true"></i>
         </a>
       </span>
     );
