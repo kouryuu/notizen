@@ -9,6 +9,9 @@
   float: left;
   resize: none;
 }
+.body-component::-webkit-scrollbar {
+    display: none;
+}
 .body-component:hover {
   border: 4px dotted #F7EFDE;
 }
