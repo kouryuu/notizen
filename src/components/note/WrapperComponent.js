@@ -9,7 +9,7 @@ class WrapperComponent extends React.Component {
   render() {
     return (
       <div className="wrapper-component">
-        <Tag></Tag><Body text="yay"></Body>
+        <Tag></Tag><Body text="Write something here."></Body>
       </div>
     );
   }
