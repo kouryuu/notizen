@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
-
+require('styles/font-awesome/css/font-awesome.css');
 import React from 'react';
 import Note from './note/WrapperComponent'
 import NoteTitle from './note/TitleComponent'
