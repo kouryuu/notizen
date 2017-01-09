@@ -1,3 +1,12 @@
+.addbutton-component a .fa-plus-circle:hover{
+  color: #9A9386;
+}
+.addbutton-component a .fa-plus-circle{
+  color: #F7EFDE;
+  font-size: 2em;
+}
 .addbutton-component {
-  border: 1px dashed #f00;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
 }
