@@ -7,6 +7,7 @@
   color: #9A9386;
   width: 100%;
   float: left;
+  resize: none;
 }
 .body-component:hover {
   border: 4px dotted #F7EFDE;
