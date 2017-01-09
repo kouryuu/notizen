@@ -5,7 +5,7 @@
   background: none;
   border: none;
   color: #9A9386;
-
+  width: 100%;
   float: left;
 }
 .body-component:hover {
@@ -14,4 +14,7 @@
 .body-component:focus {
   border: 4px dotted #A7CAE5;
   outline: none;
+}
+.body-wrapper {
+  width: 100%;
 }
