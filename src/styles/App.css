@@ -8,3 +8,15 @@ body {
   margin-top: 20px;
   margin-right: 10%;
 }
+#new-note-button .addbutton-component a .fa-plus-circle:hover{
+  color: #9A9386;
+}
+#new-note-button .addbutton-component a .fa-plus-circle{
+  color: #F7EFDE;
+  font-size: 2em;
+}
+#new-note-button .addbutton-component {
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
