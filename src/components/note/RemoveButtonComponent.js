@@ -7,7 +7,7 @@ require('styles/note/RemoveButton.css');
 class RemoveButtonComponent extends React.Component {
   render() {
     return (
-      <div className="addbutton-component">
+      <div className="removebutton-component">
         <a href="#" onClick={ this.props.clickHandler } >
         <i className="fa fa-minus-circle" aria-hidden="true"></i>
         </a>
