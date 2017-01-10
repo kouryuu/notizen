@@ -23,7 +23,9 @@ class AppComponent extends React.Component {
       <div className="index">
         <NoteTitle title={ new Date().toDateString() }></NoteTitle>
         { this.state.notes }
-        <AddButton clickHandler={ this.addNewNote.bind(this) }></AddButton>
+        <div id="new-note-button">
+          <AddButton clickHandler={ this.addNewNote.bind(this) }></AddButton>
+        </div>
       </div>
     );
   }
