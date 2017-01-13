@@ -21,6 +21,34 @@ class TimeTagComponent extends React.Component {
   zeroedNumber(number) {
     return (parseInt(number) > 9)?number:'0'+number;
   }
+  increaseHour() {
+    if(this.state.hour == 23) {
+      this.setState({hour: 0});
+    } else {
+      this.setState({hour: this.state.hour + 1});
+    }
+  }
+  increaseMinute() {
+    if(this.state.minute == 59) {
+      this.setState({minute: 0});
+    } else {
+      this.setState({minute: this.state.minute + 1});
+    }
+  }
+  decreaseHour() {
+    if(this.state.hour == 0) {
+      this.setState({hour: 23});
+    } else {
+      this.setState({hour: this.state.hour - 1});
+    }
+  }
+  decreaseMinute() {
+    if(this.state.minute == 0) {
+      this.setState({minute: 59});
+    } else {
+      this.setState({minute: this.state.minute - 1});
+    }
+  }
   render() {
     let toggleControls= function(event) {
       event.preventDefault();
