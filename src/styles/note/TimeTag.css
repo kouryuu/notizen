@@ -1,0 +1,41 @@
+.hour-control-buttons .addbutton-component a .fa-plus-circle{
+  color: #bae6d1;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+  background-color:#FEFEF4;
+  border-radius: 50%;
+}
+.hour-control-buttons {
+  flex-grow: 1;
+}
+.minute-control-buttons .addbutton-component a .fa-plus-circle {
+  color: #bae6d1;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+  background-color:#FEFEF4;
+  border-radius: 50%;
+}
+.minute-control-buttons {
+  flex-grow: 1;
+}
+.minute-control-buttons .removebutton-component a .fa-minus-circle {
+  color: #de8c8f;
+  font-size: 1em;
+}
+.hour-control-buttons .removebutton-component a .fa-minus-circle {
+  color: #de8c8f;
+  font-size: 1em;
+}
+.controls {
+  position: relative;
+  top: -2.5em;
+  margin-bottom: -2.5em;
+  display: none;
+  width: 150px;
+}
+.timertag-component a{
+  text-decoration: none;
+  color: #9A9386;
+  z-index: 5;
+  position: relative;
+}
