@@ -7,10 +7,26 @@ import Settings from './NoteSettingsComponent';
 require('styles/note/Wrapper.css');
 
 class WrapperComponent extends React.Component {
+  constructor(){
+  super();
+    this.state = {
+      tagType: 'time'
+    }
+  }
+  changeToTimeTag() {
+    this.setState({tagType: 'time'})
+  }
+  changeToColorTag() {
+    this.setState({tagType: 'color'})
+  }
   render() {
     return (
       <div className="wrapper-component">
-        <Tag></Tag><Body text="Write something here."></Body><Settings></Settings>
+        <Tag type={ this.state.tagType }></Tag>
+        <Body text="Write something here."></Body>
+        <Settings changeToTimeTag={ this.changeToTimeTag.bind(this) }
+            changeToColorTag={ this.changeToColorTag.bind(this) } >
+        </Settings>
       </div>
     );
   }
