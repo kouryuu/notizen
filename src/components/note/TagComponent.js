@@ -2,19 +2,18 @@
 
 import React from 'react';
 import TimeTag from './TimeTagComponent';
+import ColorTag from './ColorTagComponent';
 require('styles/note/Tag.css');
 
 class TagComponent extends React.Component {
   constructor() {
     super();
-    this.state = {
-      type: 'Time'
-    };
   }
   render() {
     return (
       <div className="tag-component">
-        { (this.state.type === 'Time') ? <TimeTag></TimeTag> : '' }
+        { (this.props.type === 'time') ? <TimeTag></TimeTag> : '' }
+        { (this.props.type === 'color') ? <ColorTag></ColorTag> : '' }
       </div>
     );
   }
