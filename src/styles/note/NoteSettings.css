@@ -1,0 +1,22 @@
+.notesettings-component a .fa{
+  color: #F7EFDE;
+  font-size: 20px;
+}
+.notesettings-component a .fa-cog{
+  padding-top: 20px;
+}
+.notesettings-component a {
+  float: left;
+}
+.notesettings-component a .fa:hover{
+  color: #9A9386;
+  font-size: 20px;
+}
+.notesettings-hidden {
+  flex-direction: column;
+  padding-left: 12px;
+}
+.notesettings-component a .fa-trash:hover{
+  color: red;
+  font-size: 20px;
+}
