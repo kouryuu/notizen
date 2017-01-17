@@ -10,12 +10,15 @@ class AppComponent extends React.Component {
   constructor(){
   super();
     this.state = {
-      notes: [<Note></Note>]
+      notes: [<Note key='1' ></Note>],
+      qty_notes: 1
     }
   }
   addNewNote(){
     let notes_array = this.state.notes;
-    notes_array.push(<Note></Note>);
+    let qty_notes = this.state.qty_notes + 1
+    this.setState({qty_notes: qty_notes});
+    notes_array.push(<Note key={ qty_notes }></Note>);
     this.setState({notes: notes_array});
   }
   render() {
