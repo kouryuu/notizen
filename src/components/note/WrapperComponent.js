@@ -20,13 +20,16 @@ class WrapperComponent extends React.Component {
     this.setState({tagType: 'color'})
   }
   changeToCheckboxTag() {
+    this.setState({tagType: 'checkbox'})
+  }
   render() {
     return (
       <div className="wrapper-component">
         <Tag type={ this.state.tagType }></Tag>
         <Body text="Write something here."></Body>
         <Settings changeToTimeTag={ this.changeToTimeTag.bind(this) }
-            changeToColorTag={ this.changeToColorTag.bind(this) } >
+            changeToColorTag={ this.changeToColorTag.bind(this) }
+            changeToCheckboxTag={ this.changeToCheckboxTag.bind(this) } >
         </Settings>
       </div>
     );
