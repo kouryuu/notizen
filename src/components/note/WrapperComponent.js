@@ -19,6 +19,7 @@ class WrapperComponent extends React.Component {
   changeToColorTag() {
     this.setState({tagType: 'color'})
   }
+  changeToCheckboxTag() {
   render() {
     return (
       <div className="wrapper-component">
