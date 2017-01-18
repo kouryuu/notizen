@@ -37,6 +37,9 @@ class NoteSettingsComponent extends React.Component {
           <a href="#" onClick={ this.props.changeToColorTag } >
             <i className="fa fa-paint-brush" aria-hidden="true"></i>
           </a>
+          <a href="#" onClick={ this.props.changeToCheckboxTag } >
+            <i className="fa fa-list" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     );
