@@ -3,7 +3,7 @@
 import React from 'react';
 import store from '../../stores/store.js'
 // actions
-import{ REPLACE_TAG, GET_NOTE_TAG} from '../../actions/actions'
+import{ REPLACE_TAG, GET_NOTE_TAG } from '../../actions/actions'
 require('styles/note/CheckboxTag.css');
 
 class CheckboxTagComponent extends React.Component {
