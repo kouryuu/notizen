@@ -6,6 +6,8 @@ import CheckboxTag from '../classes/tags/CheckboxTagClass';
 import React from 'react';
 import ReactNote from '../components/note/WrapperComponent'
 import * as tagType from '../classes/tags/TypesOfTags';
+// LocalStorage lib
+import Lockr from 'lockr'
 
 function create_store() {
 let current_tag_type = tagType.TIME_TAG;
@@ -13,10 +15,14 @@ let notes = [];
 let title = new Date().toDateString();
 let pageID = newPageID();
 let all_pages = Lockr.get('pages') == null?[]:Lockr.get('pages');
+
 let newPage = { pageID: pageID, title: title};
 all_pages.push(newPage);
+Lockr.set('pages', all_pages);
 notes.push(new Note(0, createNewTag(current_tag_type)));
+
   return function(action, ...args) {
+    Lockr.set(pageID, notes);
     switch (action) {
       case 'ADD_NOTE':
           let new_tag = createNewTag(current_tag_type);
@@ -49,6 +55,10 @@ notes.push(new Note(0, createNewTag(current_tag_type)));
         return notes[args[0]].getBody();
       case 'CHANGE_CURRENT_PAGE_TITLE':
         title = args[0];
+        Lockr.set('pages', all_pages.map(function(page) {
+          if(page.pageID == pageID) {
+            page.title = title;
+          }
           return page;
         }));
         break;
