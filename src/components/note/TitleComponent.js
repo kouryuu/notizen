@@ -2,6 +2,8 @@
 
 import React from 'react';
 import store from '../../stores/store.js'
+// actions.
+import { GET_CURRENT_PAGE_TITLE, CHANGE_CURRENT_PAGE_TITLE } from '../../actions/actions'
 
 require('styles/note/Title.css');
 
@@ -13,11 +15,11 @@ class TitleComponent extends React.Component {
     };
   }
   componentDidMount() {
-    this.setState({title: store('GET_CURRENT_PAGE_TITLE')});
+    this.setState({title: store(GET_CURRENT_PAGE_TITLE)});
   }
   ChangeValue(event) {
-    store('CHANGE_CURRENT_PAGE_TITLE',event.target.value);
-    this.setState({title: store('GET_CURRENT_PAGE_TITLE')});
+    store(CHANGE_CURRENT_PAGE_TITLE, event.target.value);
+    this.setState({title: store(GET_CURRENT_PAGE_TITLE)});
   }
 
   render() {
