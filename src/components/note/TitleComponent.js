@@ -1,6 +1,9 @@
 'use strict';
 
 import React from 'react';
+import store from '../../stores/store.js'
+// actions.
+import { GET_CURRENT_PAGE_TITLE, CHANGE_CURRENT_PAGE_TITLE } from '../../actions/actions'
 
 require('styles/note/Title.css');
 
@@ -11,14 +14,18 @@ class TitleComponent extends React.Component {
       title: ''
     };
   }
+  componentDidMount() {
+    this.setState({title: store(GET_CURRENT_PAGE_TITLE)});
+  }
   ChangeValue(event) {
-    this.setState({title:event.target.value});
+    store(CHANGE_CURRENT_PAGE_TITLE, event.target.value);
+    this.setState({title: store(GET_CURRENT_PAGE_TITLE)});
   }
 
   render() {
     return (
       <div>
-      <input type="text" className="title-component" placeholder={ this.props.title } value={ this.state.title } onChange={ this.ChangeValue } />
+      <input type="text" className="title-component" placeholder={ 'Give me a title.' } value={ this.state.title } onChange={ this.ChangeValue.bind(this) } />
       </div>
     );
   }
