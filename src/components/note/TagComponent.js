@@ -13,9 +13,9 @@ class TagComponent extends React.Component {
   render() {
     return (
       <div className="tag-component">
-        { (this.props.type === 'time') ? <TimeTag></TimeTag> : '' }
-        { (this.props.type === 'color') ? <ColorTag></ColorTag> : '' }
-        { (this.props.type === 'checkbox') ? <CheckboxTag></CheckboxTag> : '' }
+        { (this.props.tag.type === TagType.TIME_TAG) ? <TimeTag id={ this.props.id }></TimeTag> : '' }
+        { (this.props.tag.type === TagType.COLOR_TAG) ? <ColorTag id={ this.props.id }></ColorTag> : '' }
+        { (this.props.tag.type === TagType.CHECKBOX_TAG) ? <CheckboxTag id={ this.props.id }></CheckboxTag> : '' }
       </div>
     );
   }
