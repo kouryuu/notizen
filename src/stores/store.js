@@ -12,7 +12,7 @@ let current_tag_type = tagType.TIME_TAG;
 let notes = [];
 let title = new Date().toDateString();
 let pageID = newPageID();
-let all_pages = Lockr.get('pages') == null?[]:Lockr.get('pages');
+let all_pages = [];
 let newPage = { pageID: pageID, title: title};
 all_pages.push(newPage);
 notes.push(new Note(0, createNewTag(current_tag_type)));
@@ -50,7 +50,6 @@ notes.push(new Note(0, createNewTag(current_tag_type)));
       case 'CHANGE_CURRENT_PAGE_TITLE':
         title = args[0];
           return page;
-        }));
         break;
       case 'GET_CURRENT_PAGE_TITLE':
         return title;
