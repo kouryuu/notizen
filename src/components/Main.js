@@ -7,7 +7,7 @@ import AddButton from './note/AddButtonComponent'
 // Classes
 import store from '../stores/store.js'
 // actions
-import{ GET_REACT_NOTES } from '../../actions/actions'
+import{ GET_REACT_NOTES } from '../actions/actions'
 class AppComponent extends React.Component {
   constructor(){
   super();
