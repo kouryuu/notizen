@@ -4,6 +4,8 @@ import React from 'react';
 import TimeTag from './TimeTagComponent';
 import ColorTag from './ColorTagComponent';
 import CheckboxTag from './CheckboxTagComponent';
+import * as TagType from '../../classes/tags/TypesOfTags'
+
 require('styles/note/Tag.css');
 
 class TagComponent extends React.Component {

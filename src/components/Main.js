@@ -2,24 +2,21 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 require('styles/font-awesome/css/font-awesome.css');
 import React from 'react';
-import Note from './note/WrapperComponent'
 import NoteTitle from './note/TitleComponent'
 import AddButton from './note/AddButtonComponent'
+// Classes
+import store from '../stores/store.js'
 
 class AppComponent extends React.Component {
   constructor(){
   super();
     this.state = {
-      notes: [<Note key='1' ></Note>],
-      qty_notes: 1
+      notes: store('GET_REACT_NOTES')
     }
   }
   addNewNote(){
-    let notes_array = this.state.notes;
-    let qty_notes = this.state.qty_notes + 1
-    this.setState({qty_notes: qty_notes});
-    notes_array.push(<Note key={ qty_notes }></Note>);
-    this.setState({notes: notes_array});
+    store('ADD_NOTE');
+    this.setState({notes: store('GET_REACT_NOTES')});
   }
   render() {
     return (

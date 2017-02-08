@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import store from '../../stores/store.js'
 
 require('styles/note/CheckboxTag.css');
 
@@ -11,8 +12,15 @@ class CheckboxTagComponent extends React.Component {
       checked: false
     }
   }
+  componentDidMount() {
+    let tag = store('GET_NOTE_TAG',this.props.id);
+    this.setState({checked: tag.isChecked()});
+  }
   toggleCheck() {
-    this.setState({checked: !this.state.checked});
+    let tag = store('GET_NOTE_TAG',this.props.id);
+    tag.toggleCheck();
+    store('REPLACE_TAG',this.props.id, tag);
+    this.setState({checked: tag.isChecked()});
   }
   render() {
     return (

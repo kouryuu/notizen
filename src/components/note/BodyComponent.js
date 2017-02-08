@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-
+import store from '../../stores/store.js'
 require('styles/note/Body.css');
 
 class BodyComponent extends React.Component {
@@ -13,7 +13,8 @@ class BodyComponent extends React.Component {
     };
   }
   ChangeValue(event) {
-    this.setState({text:event.target.value});
+    store('CHANGE_BODY',this.props.id, event.target.value);
+    this.setState({text:store('GET_NOTE_BODY',this.props.id)});
   }
   GrowInput(event) {
     if(event.key === 'Enter' || event.key === 'Backspace'){
@@ -26,7 +27,7 @@ class BodyComponent extends React.Component {
   render() {
     return (
       <div className="body-wrapper">
-      <textarea type="text" className="body-component" placeholder={ this.props.text } value={ this.state.text } onChange={ this.ChangeValue.bind(this) } onKeyUp={ this.GrowInput.bind(this) } rows={ this.state.lines }/>
+      <textarea type="text" className="body-component" placeholder={ 'Write something here.' } value={ this.state.text } onChange={ this.ChangeValue.bind(this) } onKeyUp={ this.GrowInput.bind(this) } rows={ this.state.lines }/>
       </div>
     );
   }

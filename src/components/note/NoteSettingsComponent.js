@@ -28,7 +28,7 @@ class NoteSettingsComponent extends React.Component {
           <i className="fa fa-cog" aria-hidden="true"></i>
         </a>
         <div className="notesettings-hidden" style={ this.state.showSettings } >
-          <a href="#" onClick={ this.props.trashMe } >
+          <a href="#" onClick={ this.props.deleteMe } >
             <i className="fa fa-trash" aria-hidden="true"></i>
           </a>
           <a href="#" onClick={ this.props.changeToTimeTag } >
