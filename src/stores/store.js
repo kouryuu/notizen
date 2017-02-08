@@ -4,8 +4,10 @@ import TimeTag from '../classes/tags/TimeTagClass';
 import CheckboxTag from '../classes/tags/CheckboxTagClass';
 // React
 import React from 'react';
-import ReactNote from '../components/note/WrapperComponent'
+import ReactNote from '../components/note/WrapperComponent';
+// Constants
 import * as tagType from '../classes/tags/TypesOfTags';
+import * as action from '../actions/actions';
 
 function create_store() {
 let current_tag_type = tagType.TIME_TAG;
@@ -18,40 +20,40 @@ all_pages.push(newPage);
 notes.push(new Note(0, createNewTag(current_tag_type)));
   return function(action, ...args) {
     switch (action) {
-      case 'ADD_NOTE':
+      case action.ADD_NOTE:
           let new_tag = createNewTag(current_tag_type);
           let next_id  = notes.length;
           notes.push(new Note(next_id, new_tag));
           return notes;
-      case 'CHANGE_CURRENT_TAG_TYPE':
+      case action.CHANGE_CURRENT_TAG_TYPE:
         current_tag_type = args[0];
         break;
-      case 'GET_NOTES':
+      case action.GET_NOTES:
         return notes;
-      case 'GET_REACT_NOTES':
+      case action.GET_REACT_NOTES:
         let react_notes_array = [];
         notes.map(function(note){
           react_notes_array.push(<ReactNote key={note.getID()} body={note.getBody()} tag={note.getTag()} id={note.getID()}></ReactNote>);
         });
         return react_notes_array;
-      case 'CHANGE_NOTE_TAG_TYPE':
+      case action.CHANGE_NOTE_TAG_TYPE:
         notes[args[0]].changeTag(createNewTag(args[1]));
         break;
-      case 'REPLACE_TAG':
+      case action.REPLACE_TAG:
         notes[args[0]].changeTag(args[1]);
         break;
-      case 'GET_NOTE_TAG':
+      case action.GET_NOTE_TAG:
         return notes[args[0]].getTag();
-      case 'CHANGE_BODY':
+      case action.CHANGE_BODY:
         notes[args[0]].changeBody(args[1]);
         break;
-      case 'GET_NOTE_BODY':
+      case action.GET_NOTE_BODY:
         return notes[args[0]].getBody();
-      case 'CHANGE_CURRENT_PAGE_TITLE':
+      case action.CHANGE_CURRENT_PAGE_TITLE:
         title = args[0];
           return page;
         break;
-      case 'GET_CURRENT_PAGE_TITLE':
+      case action.GET_CURRENT_PAGE_TITLE:
         return title;
       default:
         console.error('UNKNOWN ACTION '+ action);
