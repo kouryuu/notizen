@@ -33,7 +33,9 @@ notes.push(new Note(0, createNewTag(current_tag_type)));
       case action.GET_REACT_NOTES:
         let react_notes_array = [];
         notes.map(function(note){
-          react_notes_array.push(<ReactNote key={note.getID()} body={note.getBody()} tag={note.getTag()} id={note.getID()}></ReactNote>);
+          react_notes_array.push(
+            <ReactNote key={note.getID()} body={note.getBody()} tag={note.getTag()} id={note.getID()}>
+            </ReactNote>);
         });
         return react_notes_array;
       case action.CHANGE_NOTE_TAG_TYPE:
