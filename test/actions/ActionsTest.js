@@ -6,7 +6,7 @@
 // Uncomment the following lines to use the react test utilities
 // import TestUtils from 'react-addons-test-utils';
 import * as action from 'actions/actions';
-
+import store from 'stores/store'
 
 describe('Action constants mapping', () => {
   it('should have ADD_NOTE action', () => {
@@ -42,4 +42,15 @@ describe('Action constants mapping', () => {
   it('should have GET_CURRENT_PAGE_TITLE action',()=>{
     expect(action.GET_CURRENT_PAGE_TITLE).to.equal('GET_CURRENT_PAGE_TITLE');
   });
+});
+
+describe('Add a note', () => {
+  let notes = store(action.ADD_NOTE);
+  it('should not be null', () => {
+    expect(notes).to.not.be.null;
+  });
+  it('should have more than one element', () => {
+    expect(notes).to.have.length.above(1);
+  });
+
 });
