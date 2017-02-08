@@ -2,7 +2,8 @@
 
 import React from 'react';
 import store from '../../stores/store.js'
-
+// actions
+import{ GET_NOTE_TAG, REPLACE_TAG } from '../../actions/actions'
 require('styles/note/ColorTag.css');
 
 class ColorTagComponent extends React.Component {
@@ -13,13 +14,13 @@ class ColorTagComponent extends React.Component {
     }
   }
   componentDidMount() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG,this.props.id);
     this.setState({color: tag.getColor()});
   }
   changeColor(event) {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG,this.props.id);
     tag.changeColor(event.target.value);
-    store('REPLACE_TAG',this.props.id, tag);
+    store(REPLACE_TAG,this.props.id, tag);
     this.setState({color: tag.getColor()})
   }
   render() {

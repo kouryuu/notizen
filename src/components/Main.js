@@ -6,17 +6,18 @@ import NoteTitle from './note/TitleComponent'
 import AddButton from './note/AddButtonComponent'
 // Classes
 import store from '../stores/store.js'
-
+// actions
+import{ GET_REACT_NOTES } from '../../actions/actions'
 class AppComponent extends React.Component {
   constructor(){
   super();
     this.state = {
-      notes: store('GET_REACT_NOTES')
+      notes: store(GET_REACT_NOTES)
     }
   }
   addNewNote(){
     store('ADD_NOTE');
-    this.setState({notes: store('GET_REACT_NOTES')});
+    this.setState({notes: store(GET_REACT_NOTES)});
   }
   render() {
     return (

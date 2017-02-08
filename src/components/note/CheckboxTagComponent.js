@@ -2,7 +2,8 @@
 
 import React from 'react';
 import store from '../../stores/store.js'
-
+// actions
+import{ REPLACE_TAG, GET_NOTE_TAG } from '../../actions/actions'
 require('styles/note/CheckboxTag.css');
 
 class CheckboxTagComponent extends React.Component {
@@ -13,13 +14,13 @@ class CheckboxTagComponent extends React.Component {
     }
   }
   componentDidMount() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG,this.props.id);
     this.setState({checked: tag.isChecked()});
   }
   toggleCheck() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG,this.props.id);
     tag.toggleCheck();
-    store('REPLACE_TAG',this.props.id, tag);
+    store(REPLACE_TAG,this.props.id, tag);
     this.setState({checked: tag.isChecked()});
   }
   render() {

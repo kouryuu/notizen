@@ -4,7 +4,8 @@ import React from 'react';
 import AddButton from './AddButtonComponent'
 import RemoveButton from './RemoveButtonComponent'
 import store from '../../stores/store.js'
-
+// actions
+import { REPLACE_TAG, GET_NOTE_TAG } from '../../actions/actions'
 require('styles/note/TimeTag.css');
 
 class TimeTagComponent extends React.Component {
@@ -19,34 +20,34 @@ class TimeTagComponent extends React.Component {
     };
   }
   componentDidMount() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG, this.props.id);
     this.setState({hours: tag.getHours(),minutes: tag.getMinutes()});
   }
   zeroedNumber(number) {
     return (parseInt(number) > 9)?number:'0'+number;
   }
   increaseHour() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG, this.props.id);
     tag.increaseHour();
-    store('REPLACE_TAG',this.props.id,tag);
+    store(REPLACE_TAG, this.props.id,tag);
     this.setState({hours: tag.getHours()});
   }
   increaseMinute() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG, this.props.id);
     tag.increaseMinute();
-    store('REPLACE_TAG',this.props.id,tag);
+    store(REPLACE_TAG, this.props.id,tag);
     this.setState({minutes: tag.getMinutes()});
   }
   decreaseHour() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG, this.props.id);
     tag.decreaseHour();
-    store('REPLACE_TAG',this.props.id,tag);
+    store(REPLACE_TAG, this.props.id,tag);
     this.setState({hours: tag.getHours()});
   }
   decreaseMinute() {
-    let tag = store('GET_NOTE_TAG',this.props.id);
+    let tag = store(GET_NOTE_TAG, this.props.id);
     tag.decreaseMinute();
-    store('REPLACE_TAG',this.props.id,tag);
+    store(REPLACE_TAG, this.props.id,tag);
     this.setState({minutes: tag.getMinutes()});
   }
   render() {

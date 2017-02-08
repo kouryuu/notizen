@@ -3,7 +3,8 @@
 import React from 'react';
 import store from '../../stores/store.js'
 require('styles/note/Body.css');
-
+// actions
+import{ GET_NOTE_BODY, CHANGE_BODY } from '../../actions/actions'
 class BodyComponent extends React.Component {
   constructor() {
     super();
@@ -13,8 +14,8 @@ class BodyComponent extends React.Component {
     };
   }
   ChangeValue(event) {
-    store('CHANGE_BODY',this.props.id, event.target.value);
-    this.setState({text:store('GET_NOTE_BODY',this.props.id)});
+    store(CHANGE_BODY,this.props.id, event.target.value);
+    this.setState({text:store(GET_NOTE_BODY,this.props.id)});
   }
   GrowInput(event) {
     if(event.key === 'Enter' || event.key === 'Backspace'){
