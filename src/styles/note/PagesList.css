@@ -1,0 +1,12 @@
+.pages-list-component {
+  width:200px;
+  margin-left: 0px;
+  display: block;
+  border-right: 1px #F7EFDE solid;
+  box-shadow: 10px 0px 50px #9A9386;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(to left, #9A9386 0%,#FEFEF4 50%);
+  background-blend-mode:darken;
+}

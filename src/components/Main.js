@@ -4,6 +4,7 @@ require('styles/font-awesome/css/font-awesome.css');
 import React from 'react';
 import NoteTitle from './note/TitleComponent'
 import AddButton from './note/AddButtonComponent'
+import PagesList from './note/PagesListComponent'
 // Classes
 import store from '../stores/store.js'
 // actions
@@ -22,10 +23,13 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-        <NoteTitle title={ new Date().toDateString() }></NoteTitle>
-        { this.state.notes }
-        <div id="new-note-button">
-          <AddButton clickHandler={ this.addNewNote.bind(this) }></AddButton>
+        <PagesList></PagesList>
+        <div className="page-wrapper">
+          <NoteTitle title={ new Date().toDateString() }></NoteTitle>
+          { this.state.notes }
+          <div id="new-note-button">
+            <AddButton clickHandler={ this.addNewNote.bind(this) }></AddButton>
+          </div>
         </div>
       </div>
     );
