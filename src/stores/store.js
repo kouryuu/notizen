@@ -69,6 +69,8 @@ notes.push(new Note(0, createNewTag(current_tag_type)));
         break;
       case actions.GET_CURRENT_PAGE_TITLE:
         return title;
+      case actions.GET_ALL_PAGES:
+        return Lockr.get('pages');
       default:
         console.error('UNKNOWN ACTION '+ action);
         return null;

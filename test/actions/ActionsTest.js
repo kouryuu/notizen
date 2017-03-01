@@ -42,6 +42,9 @@ describe('Action constants mapping', () => {
   it('should have GET_CURRENT_PAGE_TITLE action',()=>{
     expect(action.GET_CURRENT_PAGE_TITLE).to.equal('GET_CURRENT_PAGE_TITLE');
   });
+  it('should have GET_ALL_PAGES action',()=>{
+    expect(action.GET_ALL_PAGES).to.equal('GET_ALL_PAGES');
+  });
 });
 
 describe('Add a note', () => {
