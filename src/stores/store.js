@@ -9,7 +9,7 @@ import ReactNote from '../components/note/WrapperComponent';
 import * as tagType from '../classes/tags/TypesOfTags';
 
 // LocalStorage lib
-import Lockr from 'lockr'
+import * as Lockr from 'lockr'
 
 import * as actions from '../actions/actions';
 
