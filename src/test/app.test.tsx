@@ -119,7 +119,9 @@ describe("App - note deletion", () => {
     const gearButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-settings"))
     await user.click(gearButtons[0])
 
-    const trashButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-trash-2"))
+    const trashButtons = screen
+      .getAllByRole("button")
+      .filter((btn) => btn.querySelector("svg.lucide-trash-2.size-4"))
     await user.click(trashButtons[0])
 
     expect(screen.getAllByPlaceholderText("Write something here.")).toHaveLength(1)
@@ -140,6 +142,24 @@ describe("App - multiple pages", () => {
     await user.click(screen.getByText("Page Two"))
     expect(screen.getByDisplayValue("Page Two")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("Write something here.")).toHaveValue("Note in page 2")
+  })
+})
+
+describe("App - deleting last page", () => {
+  const page: Page = {
+    id: "only-page",
+    title: "Only Page",
+    notes: [],
+  }
+
+  it("deletes the only page and shows empty-pages state", async () => {
+    const { user } = renderApp({ pages: [page], currentPageId: page.id })
+
+    const trashButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-trash-2"))
+    await user.click(trashButtons[0])
+
+    expect(screen.getByText("Create a page to get started.")).toBeInTheDocument()
+    expect(screen.getByText("New Page")).toBeInTheDocument()
   })
 })
 

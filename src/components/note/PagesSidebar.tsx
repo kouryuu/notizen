@@ -41,18 +41,16 @@ export function PagesSidebar() {
               <StickyNote className="size-4 shrink-0" />
               <span className="truncate">{page.title}</span>
             </button>
-            {pages.length > 1 && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  deletePage(page.id)
-                }}
-                className="hidden text-muted-foreground transition-colors hover:text-destructive group-hover:block"
-              >
-                <Trash2 className="size-3" />
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                deletePage(page.id)
+              }}
+              className="hidden text-muted-foreground transition-colors hover:text-destructive group-hover:block"
+            >
+              <Trash2 className="size-3" />
+            </button>
           </div>
         ))}
         {pages.length === 0 && (
