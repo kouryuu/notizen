@@ -1,6 +1,18 @@
+<p align="center">
+  <img src="favicon_notizen.png" width="128" alt="Notizen" />
+</p>
+
 # Notizen v2
 
-A modern note-taking app with extensible tagging components, rebuilt from scratch.
+A note taking app with extensible tagging components.
+
+The idea behind Notizen is to be able to take notes and tag them with different tags like:
+
+- **Time** — Displays an editable hour that defaults to the current hour. Common uses include tracking development by time, or planning a day (like an agenda).
+- **Color** — Tags each note by a different color so as to organize them.
+- **Checkbox** — For items that you may want to mark as completed.
+
+...and you can create your own very easily!
 
 ## Tech Stack
 

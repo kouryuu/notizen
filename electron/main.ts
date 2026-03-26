@@ -2,11 +2,16 @@ import { app, BrowserWindow } from "electron"
 import path from "path"
 
 function createWindow() {
+  const iconPath = process.env.VITE_DEV_SERVER_URL
+    ? path.join(__dirname, "../../public/icon.png")
+    : path.join(__dirname, "../renderer/icon.png")
+
   const win = new BrowserWindow({
     width: 1100,
     height: 700,
     minWidth: 600,
     minHeight: 400,
+    icon: iconPath,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
