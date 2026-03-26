@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useAtom } from "jotai"
-import { ChevronUp, ChevronDown } from "lucide-react"
 import type { TimeTagData } from "@/types"
 import { incrementHour, decrementHour, incrementMinute, decrementMinute, zeroPad } from "@/lib/tags"
 import { updateNoteTagAtom } from "@/atoms"
@@ -23,20 +22,12 @@ export function TimeTag({ noteId, tag }: { noteId: string; tag: TimeTagData }) {
       {showControls && (
         <div className="flex gap-3">
           <div className="flex flex-col items-center">
-            <button type="button" onClick={() => update(incrementHour(tag))} className="text-accent hover:text-accent-foreground">
-              <ChevronUp className="size-4" />
-            </button>
-            <button type="button" onClick={() => update(decrementHour(tag))} className="text-destructive hover:text-destructive-foreground">
-              <ChevronDown className="size-4" />
-            </button>
+            <button type="button" onClick={() => update(incrementHour(tag))} className="rounded px-1 text-lg font-bold text-muted-foreground hover:text-foreground">+</button>
+            <button type="button" onClick={() => update(decrementHour(tag))} className="rounded px-1 text-lg font-bold text-muted-foreground hover:text-foreground">-</button>
           </div>
           <div className="flex flex-col items-center">
-            <button type="button" onClick={() => update(incrementMinute(tag))} className="text-accent hover:text-accent-foreground">
-              <ChevronUp className="size-4" />
-            </button>
-            <button type="button" onClick={() => update(decrementMinute(tag))} className="text-destructive hover:text-destructive-foreground">
-              <ChevronDown className="size-4" />
-            </button>
+            <button type="button" onClick={() => update(incrementMinute(tag))} className="rounded px-1 text-lg font-bold text-muted-foreground hover:text-foreground">+</button>
+            <button type="button" onClick={() => update(decrementMinute(tag))} className="rounded px-1 text-lg font-bold text-muted-foreground hover:text-foreground">-</button>
           </div>
         </div>
       )}
