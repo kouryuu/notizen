@@ -2,6 +2,9 @@ export const TAG_TYPES = {
   TIME: "TIME",
   COLOR: "COLOR",
   CHECKBOX: "CHECKBOX",
+  CODE: "CODE",
+  SECRET: "SECRET",
+  REMIND: "REMIND",
 } as const
 
 export type TagType = (typeof TAG_TYPES)[keyof typeof TAG_TYPES]
@@ -22,7 +25,31 @@ export type CheckboxTagData = {
   checked: boolean
 }
 
-export type Tag = TimeTagData | ColorTagData | CheckboxTagData
+export type CodeTagData = {
+  type: typeof TAG_TYPES.CODE
+  language: string
+}
+
+export type SecretTagData = {
+  type: typeof TAG_TYPES.SECRET
+  passwordHash: string
+  unlocked: boolean
+}
+
+export type RemindTagData = {
+  type: typeof TAG_TYPES.REMIND
+  minutes: number
+  seconds: number
+  fired: boolean
+}
+
+export type Tag =
+  | TimeTagData
+  | ColorTagData
+  | CheckboxTagData
+  | CodeTagData
+  | SecretTagData
+  | RemindTagData
 
 export type Note = {
   id: string

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAtom } from "jotai"
-import { Settings, Trash2, Clock, Paintbrush, ListChecks } from "lucide-react"
+import { Settings, Trash2, Clock, Paintbrush, ListChecks, Code, KeyRound, Bell } from "lucide-react"
 import { TAG_TYPES } from "@/types"
 import { deleteNoteAtom, changeNoteTagTypeAtom } from "@/atoms"
 
@@ -47,6 +47,27 @@ export function NoteSettings({ noteId }: { noteId: string }) {
             className="text-muted-foreground/40 transition-colors hover:text-foreground"
           >
             <ListChecks className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => changeTagType({ noteId, tagType: TAG_TYPES.CODE })}
+            className="text-muted-foreground/40 transition-colors hover:text-foreground"
+          >
+            <Code className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => changeTagType({ noteId, tagType: TAG_TYPES.SECRET })}
+            className="text-muted-foreground/40 transition-colors hover:text-foreground"
+          >
+            <KeyRound className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => changeTagType({ noteId, tagType: TAG_TYPES.REMIND })}
+            className="text-muted-foreground/40 transition-colors hover:text-foreground"
+          >
+            <Bell className="size-4" />
           </button>
         </div>
       )}

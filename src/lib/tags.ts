@@ -1,4 +1,13 @@
-import type { Tag, TagType, TimeTagData, ColorTagData, CheckboxTagData } from "@/types"
+import type {
+  Tag,
+  TagType,
+  TimeTagData,
+  ColorTagData,
+  CheckboxTagData,
+  CodeTagData,
+  SecretTagData,
+  RemindTagData,
+} from "@/types"
 import { TAG_TYPES } from "@/types"
 
 export function createTag(type: TagType): Tag {
@@ -18,6 +27,24 @@ export function createTag(type: TagType): Tag {
       return {
         type: TAG_TYPES.CHECKBOX,
         checked: false,
+      }
+    case TAG_TYPES.CODE:
+      return {
+        type: TAG_TYPES.CODE,
+        language: "javascript",
+      }
+    case TAG_TYPES.SECRET:
+      return {
+        type: TAG_TYPES.SECRET,
+        passwordHash: "",
+        unlocked: true,
+      }
+    case TAG_TYPES.REMIND:
+      return {
+        type: TAG_TYPES.REMIND,
+        minutes: 0,
+        seconds: 1,
+        fired: false,
       }
   }
 }
@@ -48,4 +75,62 @@ export function toggleCheckbox(tag: CheckboxTagData): CheckboxTagData {
 
 export function zeroPad(n: number): string {
   return n > 9 ? String(n) : `0${n}`
+}
+
+export function changeLanguage(tag: CodeTagData, language: string): CodeTagData {
+  return { ...tag, language }
+}
+
+export function simpleHash(str: string): string {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i)
+    hash = (hash << 5) - hash + char
+    hash |= 0
+  }
+  return hash.toString(36)
+}
+
+export function setSecretPassword(tag: SecretTagData, password: string): SecretTagData {
+  return { ...tag, passwordHash: simpleHash(password), unlocked: false }
+}
+
+export function unlockSecret(tag: SecretTagData, password: string): SecretTagData {
+  if (simpleHash(password) === tag.passwordHash) {
+    return { ...tag, unlocked: true }
+  }
+  return tag
+}
+
+export function lockSecret(tag: SecretTagData): SecretTagData {
+  if (tag.passwordHash === "") return tag
+  return { ...tag, unlocked: false }
+}
+
+export function incrementRemindMinute(tag: RemindTagData): RemindTagData {
+  return { ...tag, minutes: tag.minutes === 59 ? 0 : tag.minutes + 1, fired: false }
+}
+
+export function decrementRemindMinute(tag: RemindTagData): RemindTagData {
+  return { ...tag, minutes: tag.minutes === 0 ? 59 : tag.minutes - 1, fired: false }
+}
+
+export function incrementRemindSecond(tag: RemindTagData): RemindTagData {
+  return { ...tag, seconds: tag.seconds === 59 ? 0 : tag.seconds + 1, fired: false }
+}
+
+export function decrementRemindSecond(tag: RemindTagData): RemindTagData {
+  return { ...tag, seconds: tag.seconds === 0 ? 59 : tag.seconds - 1, fired: false }
+}
+
+export function fireReminder(tag: RemindTagData): RemindTagData {
+  return { ...tag, fired: true }
+}
+
+export function resetReminder(tag: RemindTagData): RemindTagData {
+  return { ...tag, fired: false }
+}
+
+export function remindTotalSeconds(tag: RemindTagData): number {
+  return tag.minutes * 60 + tag.seconds
 }

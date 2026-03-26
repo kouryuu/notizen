@@ -148,6 +148,48 @@ describe("note management", () => {
     expect(store.get(defaultTagTypeAtom)).toBe(TAG_TYPES.CHECKBOX)
   })
 
+  it("changeNoteTagType supports CODE with language default", () => {
+    const store = freshStore()
+    store.set(addPageAtom)
+    store.set(addNoteAtom)
+    const noteId = store.get(currentNotesAtom)[0].id
+    store.set(changeNoteTagTypeAtom, { noteId, tagType: TAG_TYPES.CODE })
+    const tag = store.get(currentNotesAtom)[0].tag
+    expect(tag.type).toBe(TAG_TYPES.CODE)
+    if (tag.type === TAG_TYPES.CODE) {
+      expect(tag.language).toBe("javascript")
+    }
+  })
+
+  it("changeNoteTagType supports SECRET with unlocked default", () => {
+    const store = freshStore()
+    store.set(addPageAtom)
+    store.set(addNoteAtom)
+    const noteId = store.get(currentNotesAtom)[0].id
+    store.set(changeNoteTagTypeAtom, { noteId, tagType: TAG_TYPES.SECRET })
+    const tag = store.get(currentNotesAtom)[0].tag
+    expect(tag.type).toBe(TAG_TYPES.SECRET)
+    if (tag.type === TAG_TYPES.SECRET) {
+      expect(tag.passwordHash).toBe("")
+      expect(tag.unlocked).toBe(true)
+    }
+  })
+
+  it("changeNoteTagType supports REMIND with 00:01 default", () => {
+    const store = freshStore()
+    store.set(addPageAtom)
+    store.set(addNoteAtom)
+    const noteId = store.get(currentNotesAtom)[0].id
+    store.set(changeNoteTagTypeAtom, { noteId, tagType: TAG_TYPES.REMIND })
+    const tag = store.get(currentNotesAtom)[0].tag
+    expect(tag.type).toBe(TAG_TYPES.REMIND)
+    if (tag.type === TAG_TYPES.REMIND) {
+      expect(tag.minutes).toBe(0)
+      expect(tag.seconds).toBe(1)
+      expect(tag.fired).toBe(false)
+    }
+  })
+
   it("notes persist to localStorage", () => {
     const store = freshStore()
     store.set(addPageAtom)
