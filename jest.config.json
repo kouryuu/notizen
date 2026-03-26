@@ -1,7 +1,0 @@
-{
-    "name": "my-project",
-    "jest": {
-      "verbose": true
-    },
-    "testPathIgnorePatterns": ["cfg/*","src/config/*"]
-  }
