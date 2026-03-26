@@ -26,7 +26,17 @@ function createWindow() {
   }
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+  const iconPath = process.env.VITE_DEV_SERVER_URL
+    ? path.join(__dirname, "../../public/icon.png")
+    : path.join(__dirname, "../renderer/icon.png")
+
+  if (process.platform === "darwin" && app.dock) {
+    app.dock.setIcon(iconPath)
+  }
+
+  createWindow()
+})
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
