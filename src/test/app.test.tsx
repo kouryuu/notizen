@@ -142,3 +142,63 @@ describe("App - multiple pages", () => {
     expect(screen.getByPlaceholderText("Write something here.")).toHaveValue("Note in page 2")
   })
 })
+
+describe("App - new tag flows", () => {
+  const page: Page = {
+    id: "test-page-tags",
+    title: "Tag Flows",
+    notes: [{ id: "note-1", body: "", tag: { type: TAG_TYPES.TIME, hours: 10, minutes: 30 } }],
+  }
+
+  async function openSettings(user: ReturnType<typeof userEvent.setup>) {
+    const gearButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-settings"))
+    await user.click(gearButtons[0])
+  }
+
+  it("switches note to CODE and allows language change", async () => {
+    const { user } = renderApp({ pages: [page], currentPageId: page.id })
+    await openSettings(user)
+
+    const codeButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-code"))
+    await user.click(codeButtons[0])
+
+    expect(screen.getByPlaceholderText("Write code here...")).toBeInTheDocument()
+    await user.click(screen.getByRole("button", { name: /javascript/i }))
+    await user.click(screen.getByRole("button", { name: /python/i }))
+    expect(screen.getByRole("button", { name: /python/i })).toBeInTheDocument()
+  })
+
+  it("locks secret note until correct password is entered", async () => {
+    const { user } = renderApp({ pages: [page], currentPageId: page.id })
+    await openSettings(user)
+
+    const secretButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-key-round"))
+    await user.click(secretButtons[0])
+
+    expect(screen.getByText("This note is locked")).toBeInTheDocument()
+    const setupInputs = screen.getAllByPlaceholderText("Password")
+    await user.type(setupInputs[0], "mypass")
+    await user.type(screen.getByPlaceholderText("Confirm"), "mypass")
+    await user.click(screen.getByRole("button", { name: "Set" }))
+
+    expect(screen.getByText("This note is locked")).toBeInTheDocument()
+    const unlockInput = screen.getByPlaceholderText("Password")
+    await user.type(unlockInput, "mypass")
+    await user.click(screen.getByRole("button", { name: "Unlock" }))
+
+    expect(screen.getByPlaceholderText("Write something here.")).toBeInTheDocument()
+  })
+
+  it("switches note to REMIND and shows MM:SS controls", async () => {
+    const { user } = renderApp({ pages: [page], currentPageId: page.id })
+    await openSettings(user)
+
+    const remindButtons = screen.getAllByRole("button").filter((btn) => btn.querySelector("svg.lucide-bell"))
+    await user.click(remindButtons[0])
+
+    expect(screen.getByText("00:01")).toBeInTheDocument()
+    const plusButtons = screen.getAllByRole("button", { name: "+" })
+    await user.click(plusButtons[0])
+    expect(screen.getByText("01:01")).toBeInTheDocument()
+  })
+})
